@@ -34,9 +34,9 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           <a href="/" className="flex-shrink-0">
             <img 
-              src="/images/cardinal-logo-horizontal-dark.png" 
+              src="/images/cardinal-header-logo.png" 
               alt="Cardinal Dirtworks" 
-              className="h-12 sm:h-14 w-auto"
+              className="h-11 sm:h-12 w-auto"
             />
           </a>
 
