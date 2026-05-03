@@ -106,17 +106,21 @@ const schema = {
             <span class="font-[Rajdhani] uppercase tracking-[0.25em] text-sm text-[#D62828]">Greater Cincinnati Sitework</span>
           </div>
 
+          <div class="mb-6 hidden sm:block">
+            <img src="/images/cardinal-icon-dark.png" alt="" class="h-20 w-20 object-contain opacity-85" />
+          </div>
+
           <h1 class="font-[Rajdhani] font-bold uppercase leading-[0.9] tracking-tight text-5xl sm:text-6xl md:text-8xl lg:text-9xl drop-shadow-2xl">
-            Heavy Work.<br />
-            <span class="text-[#D62828]">Light Touch.</span>
+            Dirt Work Done<br />
+            <span class="text-white cardinal-slash">Clean.</span>
           </h1>
 
           <p class="mt-7 max-w-2xl text-lg md:text-2xl text-zinc-200 leading-relaxed">
-            Excavation, drainage, grading, land clearing, and demolition for homeowners who need the job handled correctly the first time.
+            Excavation, drainage, grading, land clearing, and demolition with the right equipment, a clear plan, and a clean finish.
           </p>
 
           <div class="mt-10 flex flex-col sm:flex-row gap-4">
-            <a href="/get-a-quote" class="inline-flex items-center justify-center bg-[#D62828] text-[#171717] px-8 py-4 rounded-sm font-[Rajdhani] font-bold text-xl uppercase tracking-wide hover:bg-[#E63946] transition shadow-[0_0_35px_rgba(214,40,40,0.28)]">
+            <a href="/get-a-quote" class="inline-flex items-center justify-center bg-[#D62828] text-white px-8 py-4 rounded-sm font-[Rajdhani] font-bold text-xl uppercase tracking-wide hover:bg-[#A61E22] transition shadow-[0_0_35px_rgba(214,40,40,0.28)]">
               Get a Free Quote
             </a>
             <a href="tel:5139279675" class="inline-flex items-center justify-center border-2 border-white/80 text-white px-8 py-4 rounded-sm font-[Rajdhani] font-bold text-xl uppercase tracking-wide hover:bg-white hover:text-[#171717] transition">
@@ -171,7 +175,7 @@ const schema = {
                   <source src={slide.src} type="video/mp4" />
                 </video>
                 <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
-                <div class="absolute top-4 left-4 bg-[#D62828] text-[#171717] font-[Rajdhani] font-bold uppercase tracking-wide px-3 py-1 text-sm">{slide.label}</div>
+                <div class="absolute top-4 left-4 bg-[#D62828] text-white font-[Rajdhani] font-bold uppercase tracking-wide px-3 py-1 text-sm">{slide.label}</div>
                 <h3 class="absolute bottom-5 left-5 right-5 font-[Rajdhani] uppercase font-bold text-3xl md:text-4xl leading-none">{slide.title}</h3>
               </div>
             </article>
@@ -210,7 +214,7 @@ const schema = {
             <p class="font-[Rajdhani] uppercase tracking-[0.28em] text-[#D62828] mb-3">Core services</p>
             <h2 class="font-[Rajdhani] uppercase font-bold text-4xl md:text-6xl leading-none">Built for Heavy Residential Sitework</h2>
           </div>
-          <a href="/get-a-quote" class="hidden lg:inline-flex items-center justify-center bg-[#D62828] text-[#171717] px-7 py-3 rounded-sm font-[Rajdhani] font-bold text-lg uppercase hover:bg-[#E63946] transition">Start a Quote</a>
+          <a href="/get-a-quote" class="hidden lg:inline-flex items-center justify-center bg-[#D62828] text-white px-7 py-3 rounded-sm font-[Rajdhani] font-bold text-lg uppercase hover:bg-[#A61E22] transition">Start a Quote</a>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -260,7 +264,7 @@ const schema = {
                 </div>
                 <div class="relative aspect-square overflow-hidden">
                   <img src={project.after} alt={`${project.type} after`} class="w-full h-full object-cover" />
-                  <span class="absolute top-3 left-3 bg-[#D62828] text-[#171717] text-xs font-bold uppercase px-2 py-1">After</span>
+                  <span class="absolute top-3 left-3 bg-[#D62828] text-white text-xs font-bold uppercase px-2 py-1">After</span>
                 </div>
               </div>
               <div class="p-6">
@@ -281,7 +285,7 @@ const schema = {
             <p class="font-[Rajdhani] uppercase tracking-[0.28em] text-[#D62828] mb-3">Simple process</p>
             <h2 class="font-[Rajdhani] uppercase font-bold text-4xl md:text-6xl leading-none mb-6">No Guesswork. No Runaround.</h2>
             <p class="text-zinc-400 text-lg mb-8">Sitework gets expensive when the plan is vague. We walk the property, identify the issue, match the equipment to the work, and give you a clear path forward.</p>
-            <a href="/get-a-quote" class="inline-flex items-center justify-center bg-[#D62828] text-[#171717] px-8 py-4 rounded-sm font-[Rajdhani] font-bold text-xl uppercase hover:bg-[#E63946] transition">Request a Quote</a>
+            <a href="/get-a-quote" class="inline-flex items-center justify-center bg-[#D62828] text-white px-8 py-4 rounded-sm font-[Rajdhani] font-bold text-xl uppercase hover:bg-[#A61E22] transition">Request a Quote</a>
           </div>
           <div class="space-y-4">
             {[
@@ -324,7 +328,7 @@ const schema = {
               <div class="border-t border-white/10 pt-5">
                 <p class="font-[Rajdhani] uppercase text-2xl font-bold">{name}</p>
                 <p class="text-sm text-zinc-500 mb-3">{location}</p>
-                <span class="inline-block bg-[#D62828] text-[#171717] text-xs font-bold uppercase px-3 py-1">{project}</span>
+                <span class="inline-block bg-[#D62828] text-white text-xs font-bold uppercase px-3 py-1">{project}</span>
               </div>
             </article>
           ))}
@@ -350,7 +354,7 @@ const schema = {
     </section>
 
     <!-- CTA -->
-    <section class="relative py-20 md:py-28 bg-[#D62828] text-[#171717] overflow-hidden">
+    <section class="relative py-20 md:py-28 bg-[#D62828] text-white overflow-hidden">
       <div class="absolute inset-0 cardinal-grid-dark opacity-20"></div>
       <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <p class="font-[Rajdhani] uppercase tracking-[0.28em] mb-3">Ready to fix the property?</p>
@@ -366,7 +370,7 @@ const schema = {
     <!-- Sticky mobile CTA -->
     <div class="fixed bottom-0 left-0 right-0 z-50 grid grid-cols-2 border-t border-white/10 bg-[#171717]/95 backdrop-blur md:hidden">
       <a href="tel:5139279675" class="py-4 text-center font-[Rajdhani] font-bold uppercase text-white">Call</a>
-      <a href="/get-a-quote" class="py-4 text-center font-[Rajdhani] font-bold uppercase bg-[#D62828] text-[#171717]">Get Quote</a>
+      <a href="/get-a-quote" class="py-4 text-center font-[Rajdhani] font-bold uppercase bg-[#D62828] text-white">Get Quote</a>
     </div>
   </main>
 

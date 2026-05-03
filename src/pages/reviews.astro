@@ -184,7 +184,7 @@ const trustSignals = [
                   <p class="font-[Rajdhani] font-bold uppercase text-2xl">{reviews[0].name}</p>
                   <p class="text-gray-400 flex items-center gap-1"><MapPin className="w-4 h-4 text-[#D62828]" /> {reviews[0].location}</p>
                 </div>
-                <span class="bg-[#D62828] text-[#171717] px-3 py-1 font-[Rajdhani] font-bold uppercase tracking-wide text-sm">{reviews[0].project}</span>
+                <span class="bg-[#D62828] text-white px-3 py-1 font-[Rajdhani] font-bold uppercase tracking-wide text-sm">{reviews[0].project}</span>
               </div>
             </div>
           </article>
@@ -227,7 +227,7 @@ const trustSignals = [
                 <p class="font-[Rajdhani] font-bold uppercase text-[#171717] group-hover:text-white text-xl">{review.name}</p>
                 <p class="text-sm text-gray-500 group-hover:text-gray-400 flex items-center gap-1 mt-1"><MapPin className="w-4 h-4" /> {review.location}</p>
                 <div class="mt-4 grid gap-2">
-                  <span class="inline-block w-fit bg-[#D62828] text-[#171717] font-[Rajdhani] font-bold uppercase tracking-wide px-3 py-1 text-xs">{review.project}</span>
+                  <span class="inline-block w-fit bg-[#D62828] text-white font-[Rajdhani] font-bold uppercase tracking-wide px-3 py-1 text-xs">{review.project}</span>
                   <p class="text-sm text-gray-500 group-hover:text-gray-400">{review.proof}</p>
                 </div>
               </div>
@@ -253,7 +253,7 @@ const trustSignals = [
           <div class="grid sm:grid-cols-2 gap-3">
             {trustSignals.map((item, index) => (
               <div class="border border-white/10 bg-white/5 p-5">
-                <span class="w-10 h-10 bg-[#D62828] text-[#171717] flex items-center justify-center font-[Rajdhani] font-bold mb-5">{String(index + 1).padStart(2, '0')}</span>
+                <span class="w-10 h-10 bg-[#D62828] text-white flex items-center justify-center font-[Rajdhani] font-bold mb-5">{String(index + 1).padStart(2, '0')}</span>
                 <p class="text-lg font-medium text-gray-200">{item}</p>
               </div>
             ))}
@@ -266,7 +266,7 @@ const trustSignals = [
     <section class="py-18 md:py-24 bg-white">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto bg-[#f5f5f0] border border-black/10 p-8 md:p-12 text-center shadow-xl">
-          <div class="w-16 h-16 bg-[#D62828] text-[#171717] flex items-center justify-center mx-auto mb-6">
+          <div class="w-16 h-16 bg-[#D62828] text-white flex items-center justify-center mx-auto mb-6">
             <MessageSquare className="w-8 h-8" />
           </div>
           <p class="kicker mb-3">Worked with Cardinal Dirtworks?</p>
@@ -299,7 +299,7 @@ const trustSignals = [
           <div class="bg-[#171717] text-white p-7 md:p-8 shadow-2xl">
             <p class="text-2xl font-[Rajdhani] font-bold uppercase mb-5">Free quote. Straight answer. Clean handoff.</p>
             <div class="flex flex-col gap-3">
-              <a href="/get-a-quote" class="inline-flex items-center justify-center px-8 py-4 bg-[#D62828] text-[#171717] font-[Rajdhani] font-bold uppercase tracking-wide hover:bg-white transition">
+              <a href="/get-a-quote" class="inline-flex items-center justify-center px-8 py-4 bg-[#D62828] text-white font-[Rajdhani] font-bold uppercase tracking-wide hover:bg-white transition">
                 Get Your Free Quote <ArrowRight className="w-5 h-5 ml-2" />
               </a>
               <a href="tel:5139279675" class="inline-flex items-center justify-center px-8 py-4 border-2 border-white/20 text-white font-[Rajdhani] font-bold uppercase tracking-wide hover:border-[#D62828] hover:text-[#D62828] transition">

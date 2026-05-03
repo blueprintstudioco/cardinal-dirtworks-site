@@ -52,7 +52,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   padding: 0.9rem 1.6rem;
   background-color: var(--color-primary);
-  color: #171717;
+  color: white;
   font-family: var(--font-family-heading);
   font-weight: 800;
   font-size: 1rem;
@@ -65,7 +65,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary:hover {
-  background-color: #E63946;
+  background-color: #A61E22;
   transform: translateY(-1px);
 }
 
@@ -208,4 +208,56 @@ h1, h2, h3, h4, h5, h6 {
 
 .accordion-content.open {
   max-height: 500px;
+}
+
+
+/* Cardinal Dirtworks brand accents */
+.cardinal-cutout {
+  position: relative;
+}
+
+.cardinal-cutout::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 92px;
+  height: 92px;
+  border-top: 5px solid #D62828;
+  border-left: 5px solid #D62828;
+  opacity: .82;
+}
+
+.cardinal-slash {
+  position: relative;
+  display: inline-block;
+}
+
+.cardinal-slash::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: -0.08em;
+  bottom: 0.05em;
+  height: 0.12em;
+  background: #D62828;
+  z-index: -1;
+  transform: skewX(-16deg);
+  opacity: .95;
+}
+
+.cardinal-wing-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.cardinal-wing-card::after {
+  content: "";
+  position: absolute;
+  right: -42px;
+  top: -42px;
+  width: 130px;
+  height: 130px;
+  background: linear-gradient(135deg, transparent 48%, rgba(214,40,40,.24) 49%, rgba(214,40,40,.24) 61%, transparent 62%);
+  pointer-events: none;
 }

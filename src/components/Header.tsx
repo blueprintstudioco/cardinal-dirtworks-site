@@ -114,7 +114,7 @@ export default function Header() {
             </a>
             <a 
               href="/get-a-quote" 
-              className="bg-[#D62828] text-white px-5 py-2.5 rounded-sm font-bold hover:bg-[#E63946] transition font-[Rajdhani] uppercase tracking-wide"
+              className="bg-[#D62828] text-white px-5 py-2.5 rounded-sm font-bold hover:bg-[#A61E22] transition font-[Rajdhani] uppercase tracking-wide"
             >
               Get a Quote
             </a>
@@ -187,7 +187,7 @@ export default function Header() {
                   <Phone className="h-4 w-4 mr-2" />
                   (513) 927-9675
                 </a>
-                <a href="/get-a-quote" className="block text-center bg-[#D62828] text-white px-5 py-3 rounded font-semibold hover:bg-[#E63946] transition font-[Rajdhani]">
+                <a href="/get-a-quote" className="block text-center bg-[#D62828] text-white px-5 py-3 rounded font-semibold hover:bg-[#A61E22] transition font-[Rajdhani]">
                   Get a Quote
                 </a>
               </div>

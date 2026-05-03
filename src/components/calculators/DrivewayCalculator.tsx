@@ -130,7 +130,7 @@ export default function DrivewayCalculator() {
 
         <button
           onClick={calculate}
-          className="w-full bg-[#D62828] text-[#1a1a1a] py-3 rounded-lg font-[Rajdhani] font-bold text-lg hover:bg-[#E63946] transition"
+          className="w-full bg-[#D62828] text-white py-3 rounded-lg font-[Rajdhani] font-bold text-lg hover:bg-[#A61E22] transition"
         >
           Calculate My Estimate
         </button>

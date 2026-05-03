@@ -237,7 +237,7 @@ const commonConcerns = [
               <HelpCircle className="w-9 h-9 text-[#D62828] mb-4" />
               <h3 class="text-2xl font-[Rajdhani] font-bold uppercase mb-3">Still unsure?</h3>
               <p class="text-gray-300 leading-relaxed mb-6">Send photos and the address. We will tell you what we need to know next.</p>
-              <a href="/get-a-quote" class="inline-flex items-center justify-center px-6 py-3 bg-[#D62828] text-[#171717] font-[Rajdhani] font-bold uppercase tracking-wide hover:bg-white transition">
+              <a href="/get-a-quote" class="inline-flex items-center justify-center px-6 py-3 bg-[#D62828] text-white font-[Rajdhani] font-bold uppercase tracking-wide hover:bg-white transition">
                 Start a Quote <ArrowRight className="w-4 h-4 ml-2" />
               </a>
             </div>
@@ -258,7 +258,7 @@ const commonConcerns = [
                     <details class="group bg-white open:bg-[#f5f5f0] transition" open={index === 0}>
                       <summary class="cursor-pointer list-none p-6 md:p-7 flex items-start justify-between gap-5">
                         <span class="text-xl md:text-2xl font-[Rajdhani] font-bold uppercase text-[#171717] leading-tight">{item.question}</span>
-                        <span class="w-9 h-9 bg-[#D62828] text-[#171717] flex items-center justify-center font-bold flex-shrink-0 group-open:rotate-45 transition-transform">+</span>
+                        <span class="w-9 h-9 bg-[#D62828] text-white flex items-center justify-center font-bold flex-shrink-0 group-open:rotate-45 transition-transform">+</span>
                       </summary>
                       <div class="px-6 md:px-7 pb-7 -mt-2">
                         <p class="text-gray-700 leading-relaxed text-lg max-w-3xl">{item.answer}</p>
@@ -289,7 +289,7 @@ const commonConcerns = [
           <div class="grid sm:grid-cols-2 gap-3">
             {commonConcerns.map((item, index) => (
               <div class="border border-white/10 bg-white/5 p-5">
-                <span class="w-10 h-10 bg-[#D62828] text-[#171717] flex items-center justify-center font-[Rajdhani] font-bold mb-5">{String(index + 1).padStart(2, '0')}</span>
+                <span class="w-10 h-10 bg-[#D62828] text-white flex items-center justify-center font-[Rajdhani] font-bold mb-5">{String(index + 1).padStart(2, '0')}</span>
                 <p class="text-lg font-medium text-gray-200">{item}</p>
               </div>
             ))}
@@ -314,7 +314,7 @@ const commonConcerns = [
           <div class="bg-[#171717] text-white p-7 md:p-8 shadow-2xl">
             <p class="text-2xl font-[Rajdhani] font-bold uppercase mb-5">Free quote. Straight answer. Clean plan.</p>
             <div class="flex flex-col gap-3">
-              <a href="/get-a-quote" class="inline-flex items-center justify-center px-8 py-4 bg-[#D62828] text-[#171717] font-[Rajdhani] font-bold uppercase tracking-wide hover:bg-white transition">
+              <a href="/get-a-quote" class="inline-flex items-center justify-center px-8 py-4 bg-[#D62828] text-white font-[Rajdhani] font-bold uppercase tracking-wide hover:bg-white transition">
                 Get Your Free Quote <ArrowRight className="w-5 h-5 ml-2" />
               </a>
               <a href="tel:5139279675" class="inline-flex items-center justify-center px-8 py-4 border-2 border-white/20 text-white font-[Rajdhani] font-bold uppercase tracking-wide hover:border-[#D62828] hover:text-[#D62828] transition">

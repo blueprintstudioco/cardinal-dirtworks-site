@@ -408,7 +408,7 @@ const excavationQuoteFactors = [
     <section class="bg-[#171717] text-white py-16 md:py-20 cardinal-topo border-y border-white/10">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-[0.85fr_1.15fr] gap-10 items-stretch">
-          <div class="border border-[#D62828]/40 bg-[#D62828] text-[#171717] p-8 md:p-10 flex flex-col justify-between">
+          <div class="border border-[#D62828]/40 bg-[#D62828] text-white p-8 md:p-10 flex flex-col justify-between">
             <div>
               <p class="text-sm uppercase tracking-[0.25em] font-bold mb-4">The Cardinal Dirtworks standard</p>
               <h2 class="text-4xl md:text-5xl font-[Rajdhani] font-bold uppercase leading-none mb-5">
@@ -475,7 +475,7 @@ const excavationQuoteFactors = [
                 <article class="group relative min-h-[410px] overflow-hidden bg-[#171717] border border-black/10 shadow-2xl">
                   <img src={item.image} alt={item.title} class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                   <div class="absolute inset-0 bg-gradient-to-t from-[#171717] via-[#171717]/52 to-transparent"></div>
-                  <div class="absolute top-4 left-4 bg-[#D62828] text-[#171717] px-3 py-2 font-[Rajdhani] font-bold uppercase tracking-wide text-sm">
+                  <div class="absolute top-4 left-4 bg-[#D62828] text-white px-3 py-2 font-[Rajdhani] font-bold uppercase tracking-wide text-sm">
                     {item.stat}
                   </div>
                   <div class="relative z-10 h-full flex flex-col justify-end p-6">
@@ -636,7 +636,7 @@ const excavationQuoteFactors = [
                 <p class="text-lg text-gray-300 leading-relaxed mb-6">
                   {premiumCopy.fieldCopy}
                 </p>
-                <a href="/portfolio" class="inline-flex bg-[#D62828] text-[#171717] px-6 py-4 font-[Rajdhani] font-bold uppercase tracking-wide hover:bg-white transition">
+                <a href="/portfolio" class="inline-flex bg-[#D62828] text-white px-6 py-4 font-[Rajdhani] font-bold uppercase tracking-wide hover:bg-white transition">
                   View More Projects →
                 </a>
               </div>
@@ -651,7 +651,7 @@ const excavationQuoteFactors = [
                     />
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent"></div>
                     <figcaption class="absolute bottom-0 left-0 right-0 p-5">
-                      <span class="inline-block bg-[#D62828] text-[#171717] px-3 py-1 font-[Rajdhani] font-bold uppercase text-sm mb-3">
+                      <span class="inline-block bg-[#D62828] text-white px-3 py-1 font-[Rajdhani] font-bold uppercase text-sm mb-3">
                         Project {String(i + 1).padStart(2, '0')}
                       </span>
                       <p class="text-white font-semibold">{service.shortTitle} handled cleanly, controlled, and ready for the next phase.</p>
@@ -723,7 +723,7 @@ const excavationQuoteFactors = [
                     </li>
                   ))}
                 </ul>
-                <a href="/get-a-quote" class="block mt-6 text-center bg-[#D62828] text-[#1a1a1a] font-[Rajdhani] font-semibold py-3 rounded hover:bg-[#E63946] transition">
+                <a href="/get-a-quote" class="block mt-6 text-center bg-[#D62828] text-white font-[Rajdhani] font-semibold py-3 rounded hover:bg-[#A61E22] transition">
                   {isPremiumResidential ? premiumCopy.quoteLabel : 'Get a Free Quote'}
                 </a>
               </div>
@@ -775,7 +775,7 @@ const excavationQuoteFactors = [
                   <ul class="grid sm:grid-cols-2 gap-x-8 gap-y-4 text-left">
                     {service.expectations!.details.map((detail) => (
                       <li class="flex items-start gap-3 text-gray-700 leading-relaxed">
-                        <span class="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#D62828] text-[#171717] text-xs font-bold flex-shrink-0">✓</span>
+                        <span class="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#D62828] text-white text-xs font-bold flex-shrink-0">✓</span>
                         <span>{detail}</span>
                       </li>
                     ))}
