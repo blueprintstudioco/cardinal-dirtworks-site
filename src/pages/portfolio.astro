@@ -1,0 +1,370 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer.astro';
+import { ArrowRight, CheckCircle, Clock, MapPin, Phone, Shield, Star } from 'lucide-react';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Our Work | Cardinal Dirtworks",
+  "description": "Before and after project gallery showcasing excavation, land clearing, drainage, driveway, and residential sitework across Greater Cincinnati.",
+  "provider": {
+    "@type": "HomeAndConstructionBusiness",
+    "name": "Cardinal Dirtworks",
+    "telephone": "+1-513-927-9675"
+  }
+};
+
+const projects = [
+  {
+    title: 'Foundation Excavation',
+    location: 'Anderson Township, OH',
+    category: 'Excavation',
+    problem: 'A tight residential lot needed a basement dug cleanly without turning access, spoil, and the next crew into a fight.',
+    result: 'Clean vertical walls, level bottom, managed spoil, and a foundation-ready handoff in under two days.',
+    before: '/images/portfolio/excavation-before-1.png',
+    after: '/images/portfolio/excavation-after-1.png',
+    stats: [
+      { label: 'Duration', value: '2 Days' },
+      { label: 'Depth', value: '9 ft' },
+      { label: 'Handoff', value: 'Foundation Ready' }
+    ],
+    checklist: ['Access planned before digging', 'Spoil staged out of the way', 'Bottom checked for a clean handoff']
+  },
+  {
+    title: 'French Drain & Regrading',
+    location: 'West Chester, OH',
+    category: 'Drainage',
+    problem: 'Water sat against the foundation after every rain. A pipe alone would have just moved the wet spot.',
+    result: 'A French drain, regraded backyard, and cleaner water path away from the house.',
+    before: '/images/portfolio/drainage-before-1.png',
+    after: '/images/portfolio/drainage-after-1.png',
+    stats: [
+      { label: 'Duration', value: '1.5 Days' },
+      { label: 'Drain', value: '85 ft' },
+      { label: 'Fix', value: 'Water Path' }
+    ],
+    checklist: ['Water source identified', 'Outlet path planned', 'Grade corrected with the drain']
+  },
+  {
+    title: 'Residential Land Clearing',
+    location: 'Milford, OH',
+    category: 'Land Clearing',
+    problem: 'A half-acre lot was swallowed by honeysuckle and dense brush, but the homeowner wanted the good trees protected.',
+    result: 'The parcel was opened up, select trees preserved, and the site left ready for the next contractor.',
+    before: '/images/portfolio/clearing-before-1.png',
+    after: '/images/portfolio/clearing-after-1.png',
+    stats: [
+      { label: 'Duration', value: '1 Day' },
+      { label: 'Area', value: '0.5 Acres' },
+      { label: 'Finish', value: 'Build Ready' }
+    ],
+    checklist: ['Keeper trees protected', 'Brush processed on site', 'Usable ground exposed']
+  },
+  {
+    title: 'Concrete Driveway Replacement',
+    location: 'Lebanon, OH',
+    category: 'Driveways',
+    problem: 'The old driveway was cracked, heaving, and failing because the base underneath was not doing its job.',
+    result: 'Concrete removed, subgrade corrected, base compacted, and the replacement driveway set up to last.',
+    before: '/images/portfolio/driveway-before-1.png',
+    after: '/images/portfolio/driveway-after-1.png',
+    stats: [
+      { label: 'Duration', value: '3 Days' },
+      { label: 'Length', value: '50 ft' },
+      { label: 'Scope', value: 'Remove + Prep' }
+    ],
+    checklist: ['Failed concrete hauled off', 'Base regraded and compacted', 'Edges and drainage planned']
+  },
+  {
+    title: 'Farm Pond Excavation',
+    location: 'Goshen, OH',
+    category: 'Ponds',
+    problem: 'The property owner needed a new pond shaped to spec, not just a hole dug in a low spot.',
+    result: 'A half-acre pond excavation with shaped shelves, bank contours, and planned spoil placement.',
+    before: '/images/portfolio/pond-before-1.png',
+    after: '/images/portfolio/pond-after-1.png',
+    stats: [
+      { label: 'Duration', value: '3 Days' },
+      { label: 'Size', value: '0.5 Acres' },
+      { label: 'Depth', value: '12 ft' }
+    ],
+    checklist: ['Depth and shape followed spec', 'Banks shaped for maintenance', 'Spoil placement managed']
+  }
+];
+
+const gallery = [
+  { src: '/images/gallery/residential/excavation-1.png', label: 'Excavation' },
+  { src: '/images/gallery/residential/excavation-2.png', label: 'Excavation' },
+  { src: '/images/gallery/residential/drainage-1.png', label: 'Drainage' },
+  { src: '/images/gallery/residential/grading-1.png', label: 'Grading' },
+  { src: '/images/gallery/residential/retaining-walls-1.png', label: 'Retaining Walls' },
+  { src: '/images/gallery/residential/driveways-1.png', label: 'Driveways' },
+  { src: '/images/gallery/residential/land-clearing-1.png', label: 'Land Clearing' },
+  { src: '/images/gallery/residential/demolition-1.png', label: 'Demolition' },
+  { src: '/images/gallery/residential/foundation-1.png', label: 'Foundation Work' },
+  { src: '/images/gallery/residential/pond-2.png', label: 'Ponds' },
+  { src: '/images/gallery/residential/concrete-removal-1.png', label: 'Concrete Removal' },
+  { src: '/images/gallery/residential/lot-prep-1.png', label: 'Lot Prep' },
+  { src: '/images/gallery/residential/erosion-control-1.png', label: 'Erosion Control' },
+  { src: '/images/gallery/residential/utilities-1.png', label: 'Utilities' },
+  { src: '/images/gallery/residential/pool-removal-1.png', label: 'Pool Removal' },
+  { src: '/images/gallery/residential/stump-removal-1.png', label: 'Stump Removal' }
+];
+
+const proofStats = [
+  { value: '150+', label: 'projects completed' },
+  { value: '50+', label: '5-star reviews' },
+  { value: '10+', label: 'years around equipment' },
+  { value: '100%', label: 'focused on clean handoff' }
+];
+---
+
+<Layout 
+  title="Our Work | Project Gallery | Cardinal Dirtworks"
+  description="See real before and after results from Cardinal Dirtworks excavation, land clearing, drainage, grading, driveway, and sitework projects across Greater Cincinnati."
+  schema={schema}
+>
+  <Header client:load />
+
+  <main class="pt-20 bg-[#f5f5f0]">
+    <!-- Hero -->
+    <section class="relative min-h-[76vh] bg-[#171717] text-white overflow-hidden flex items-center">
+      <div class="absolute inset-0">
+        <img src="/images/portfolio/excavation-after-1.png" alt="Finished Cardinal Dirtworks excavation project" class="w-full h-full object-cover opacity-42" />
+        <div class="absolute inset-0 bg-gradient-to-r from-[#171717] via-[#171717]/82 to-[#171717]/35"></div>
+        <div class="absolute inset-0 cardinal-grid opacity-70"></div>
+      </div>
+
+      <div class="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-end">
+          <div>
+            <div class="flex items-center gap-3 mb-5">
+              <div class="flex text-yellow-400">
+                {[1,2,3,4,5].map(() => <Star className="w-5 h-5 fill-current" />)}
+              </div>
+              <span class="text-gray-300 text-sm font-medium">5.0 from 50+ reviews</span>
+            </div>
+            <p class="kicker mb-4">Cardinal Dirtworks project gallery</p>
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-[Rajdhani] font-bold uppercase leading-[0.85] tracking-tight mb-7">
+              Proof Before<br /><span class="text-[#D62828]">Promises.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 max-w-3xl leading-relaxed mb-8">
+              Before and after sitework across Greater Cincinnati. Excavation, drainage, clearing, driveways, ponds, and the messy ground problems that need a clean handoff.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="/get-a-quote" class="btn-primary text-base">Start My Project <ArrowRight className="w-5 h-5 ml-2" /></a>
+              <a href="tel:5139279675" class="inline-flex items-center justify-center px-8 py-4 border-2 border-white/30 text-white font-[Rajdhani] font-semibold uppercase tracking-wide hover:border-[#D62828] hover:text-[#D62828] transition">
+                <Phone className="w-5 h-5 mr-2" /> (513) 927-9675
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-white/8 backdrop-blur border border-white/15 p-6 md:p-8 shadow-2xl">
+            <p class="text-[#D62828] font-[Rajdhani] font-bold uppercase tracking-widest text-sm mb-4">What to look for</p>
+            <p class="text-2xl md:text-3xl font-[Rajdhani] font-bold uppercase leading-tight mb-5">
+              The after photo should make the next step easier.
+            </p>
+            <div class="space-y-4">
+              {['Access controlled', 'Water and grade considered', 'Debris, spoil, or failed material handled', 'Site ready for the next phase'].map((item) => (
+                <div class="flex items-start gap-3 text-gray-200">
+                  <CheckCircle className="w-5 h-5 text-[#D62828] flex-shrink-0 mt-0.5" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proof Stats -->
+    <section class="bg-[#171717] border-y border-white/10 py-8">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {proofStats.map((stat) => (
+            <div class="border border-white/10 bg-white/5 p-5 text-center">
+              <div class="text-4xl md:text-5xl font-[Rajdhani] font-bold text-[#D62828] leading-none">{stat.value}</div>
+              <p class="text-gray-300 text-sm mt-2 uppercase tracking-wide">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="py-18 md:py-24 bg-white">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-[0.8fr_1.2fr] gap-10 items-end mb-14">
+          <div>
+            <p class="kicker mb-3">Featured transformations</p>
+            <h2 class="text-4xl md:text-6xl font-[Rajdhani] font-bold uppercase text-[#171717] leading-none">
+              Real problems. Clean handoffs.
+            </h2>
+          </div>
+          <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">
+            These are not beauty shots for a portfolio grid. They show the work that matters: rough ground turned into usable ground, water given a path, access restored, and projects made easier for the next phase.
+          </p>
+        </div>
+
+        <div class="space-y-14 max-w-7xl mx-auto">
+          {projects.map((project, index) => (
+            <article class="grid lg:grid-cols-[1.15fr_0.85fr] gap-0 bg-[#171717] text-white shadow-2xl">
+              <div class="grid sm:grid-cols-2 min-h-[420px]">
+                <div class="relative overflow-hidden bg-black">
+                  <img src={project.before} alt={`${project.title} before`} class="absolute inset-0 w-full h-full object-cover opacity-85 hover:scale-105 transition-transform duration-500" loading="lazy" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                  <div class="absolute top-4 left-4 bg-[#7f1d1d] text-white px-4 py-2 font-[Rajdhani] font-bold uppercase tracking-wide text-sm">Before</div>
+                </div>
+                <div class="relative overflow-hidden bg-black">
+                  <img src={project.after} alt={`${project.title} after`} class="absolute inset-0 w-full h-full object-cover opacity-95 hover:scale-105 transition-transform duration-500" loading="lazy" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div class="absolute top-4 left-4 bg-[#D62828] text-[#171717] px-4 py-2 font-[Rajdhani] font-bold uppercase tracking-wide text-sm">After</div>
+                </div>
+              </div>
+
+              <div class="p-7 md:p-10 flex flex-col justify-between cardinal-grid">
+                <div>
+                  <div class="inline-flex items-center bg-[#D62828] text-[#171717] px-3 py-1 font-[Rajdhani] font-bold uppercase tracking-widest text-xs mb-4">
+                    {project.category}
+                  </div>
+                  <h3 class="text-4xl md:text-5xl font-[Rajdhani] font-bold uppercase leading-none mb-3">{project.title}</h3>
+                  <p class="text-gray-300 flex items-center gap-1 mb-6">
+                    <MapPin className="w-4 h-4 text-[#D62828]" /> {project.location}
+                  </p>
+
+                  <div class="grid gap-4 mb-7">
+                    <div class="border border-white/10 bg-white/5 p-5">
+                      <p class="text-[#D62828] font-[Rajdhani] font-bold uppercase tracking-wide text-sm mb-2">The problem</p>
+                      <p class="text-gray-300 leading-relaxed">{project.problem}</p>
+                    </div>
+                    <div class="border border-white/10 bg-white/5 p-5">
+                      <p class="text-[#D62828] font-[Rajdhani] font-bold uppercase tracking-wide text-sm mb-2">The result</p>
+                      <p class="text-gray-300 leading-relaxed">{project.result}</p>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-3 gap-3 mb-7">
+                    {project.stats.map((stat) => (
+                      <div class="border border-white/10 bg-black/25 p-3 text-center">
+                        <div class="text-xl font-[Rajdhani] font-bold uppercase text-white leading-tight">{stat.value}</div>
+                        <div class="text-xs text-gray-400 mt-1">{stat.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div class="space-y-2">
+                  {project.checklist.map((item) => (
+                    <div class="flex items-center gap-3 text-gray-200">
+                      <CheckCircle className="w-5 h-5 text-[#D62828] flex-shrink-0" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="py-18 md:py-24 bg-[#171717] text-white cardinal-topo">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-[0.85fr_1.15fr] gap-10 items-end mb-12">
+          <div>
+            <p class="kicker mb-3">Field proof</p>
+            <h2 class="text-4xl md:text-6xl font-[Rajdhani] font-bold uppercase leading-none">
+              A closer look at the work.
+            </h2>
+          </div>
+          <p class="text-lg text-gray-300 leading-relaxed max-w-3xl">
+            Excavation, grading, retaining walls, drainage, demolition, driveways, utilities, ponds, and cleanup. Different jobs, same standard: control the site and leave it ready.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+          {gallery.map((img, index) => (
+            <div class={`group relative overflow-hidden bg-black border border-white/10 ${index === 0 || index === 9 ? 'md:col-span-2 md:row-span-2' : ''}`}>
+              <img src={img.src} alt={img.label} class="w-full h-full min-h-[210px] object-cover opacity-82 group-hover:opacity-100 group-hover:scale-105 transition duration-500" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-4">
+                <span class="inline-block bg-[#D62828] text-[#171717] px-3 py-1 font-[Rajdhani] font-bold uppercase tracking-wide text-xs">{img.label}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Standard Section -->
+    <section class="py-18 md:py-24 bg-white">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-[0.95fr_1.05fr] gap-12 items-center">
+          <div>
+            <p class="kicker mb-3">The Cardinal Dirtworks standard</p>
+            <h2 class="text-4xl md:text-6xl font-[Rajdhani] font-bold uppercase text-[#171717] leading-none mb-6">
+              The job is not finished when the machine stops.
+            </h2>
+            <p class="text-xl text-gray-700 leading-relaxed mb-6">
+              The finish is the handoff. Can the builder work? Does water have a path? Is the access still usable? Did the property survive the project?
+            </p>
+            <p class="text-lg text-gray-600 leading-relaxed">
+              That is why the portfolio is built around before, after, problem, and result instead of random pretty equipment photos.
+            </p>
+          </div>
+          <div class="bg-[#f5f5f0] border border-black/10 p-7 md:p-9 shadow-xl">
+            {[ 
+              'Clear scope before equipment arrives',
+              'Right-sized equipment for the property',
+              'Access, water, grade, and cleanup planned early',
+              'Straight communication when conditions change',
+              'A site left ready for the next phase'
+            ].map((item, index) => (
+              <div class="flex items-start gap-4 border-b border-black/10 py-5 first:pt-0 last:border-b-0 last:pb-0">
+                <span class="w-10 h-10 bg-[#171717] text-[#D62828] flex items-center justify-center font-[Rajdhani] font-bold flex-shrink-0">{String(index + 1).padStart(2, '0')}</span>
+                <span class="text-lg font-medium text-gray-800">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-18 md:py-24 bg-[#D62828] cardinal-grid-dark">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-[1fr_0.8fr] gap-10 items-center">
+          <div>
+            <p class="font-[Rajdhani] font-bold uppercase tracking-widest text-[#171717]/70 mb-3">Your property next</p>
+            <h2 class="text-5xl md:text-7xl font-[Rajdhani] font-bold uppercase text-[#171717] leading-none mb-5">
+              Ready for a cleaner before and after?
+            </h2>
+            <p class="text-xl text-[#171717]/75 max-w-2xl leading-relaxed">
+              Send the photos, describe the problem, or tell us what you need the site ready for. We will help you figure out the cleanest path forward.
+            </p>
+          </div>
+          <div class="bg-[#171717] text-white p-7 md:p-8 shadow-2xl">
+            <p class="text-2xl font-[Rajdhani] font-bold uppercase mb-5">Free quote. Straight answer. No pressure.</p>
+            <div class="flex flex-col gap-3">
+              <a href="/get-a-quote" class="inline-flex items-center justify-center px-8 py-4 bg-[#D62828] text-[#171717] font-[Rajdhani] font-bold uppercase tracking-wide hover:bg-white transition">
+                Get Your Free Quote <ArrowRight className="w-5 h-5 ml-2" />
+              </a>
+              <a href="tel:5139279675" class="inline-flex items-center justify-center px-8 py-4 border-2 border-white/20 text-white font-[Rajdhani] font-bold uppercase tracking-wide hover:border-[#D62828] hover:text-[#D62828] transition">
+                <Phone className="w-5 h-5 mr-2" /> Call (513) 927-9675
+              </a>
+            </div>
+            <div class="flex flex-wrap gap-4 mt-6 text-sm text-gray-300">
+              <span class="flex items-center gap-1"><Shield className="w-4 h-4 text-[#D62828]" /> Licensed & Insured</span>
+              <span class="flex items-center gap-1"><Clock className="w-4 h-4 text-[#D62828]" /> Same-week scheduling</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

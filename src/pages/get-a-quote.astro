@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer.astro';
+import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+
+---
+
+<Layout 
+  title="Get a Quote | Cardinal Dirtworks | Cincinnati Excavation & Sitework"
+  description="Request a free quote for your excavation, sitework, or land clearing project. Contact Cardinal Dirtworks for professional service in Greater Cincinnati."
+>
+  <Header client:load />
+  
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <section class="page-hero py-20 md:py-28">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[Rajdhani] font-bold uppercase text-white mb-4">
+          Get a <span class="text-[#D62828]">Free Quote</span>
+        </h1>
+        <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+          Tell us about your project and we'll get back to you within 24 hours
+        </p>
+      </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="py-16 bg-[#f5f5f0]">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-3 gap-12">
+          <!-- Contact Info -->
+          <div class="lg:col-span-1">
+            <h2 class="text-2xl font-[Rajdhani] font-bold uppercase text-[#1a1a1a] mb-6">
+              Contact Information
+            </h2>
+            
+            <div class="space-y-6">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-full bg-[#D62828]/20 flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-5 h-5 text-[#D62828]" />
+                </div>
+                <div>
+                  <h3 class="font-semibold text-[#1a1a1a]">Phone</h3>
+                  <a href="tel:5139279675" class="text-gray-600 hover:text-[#D62828] transition">
+                    (513) 927-9675
+                  </a>
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-full bg-[#D62828]/20 flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-5 h-5 text-[#D62828]" />
+                </div>
+                <div>
+                  <h3 class="font-semibold text-[#1a1a1a]">Email</h3>
+                  <a href="mailto:team@cardinaldirtworks.com" class="text-gray-600 hover:text-[#D62828] transition">
+                    team@cardinaldirtworks.com
+                  </a>
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-full bg-[#D62828]/20 flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-5 h-5 text-[#D62828]" />
+                </div>
+                <div>
+                  <h3 class="font-semibold text-[#1a1a1a]">Address</h3>
+                  <p class="text-gray-600">
+                    1481 SR 28, Suite 901<br />
+                    Loveland, OH 45140
+                  </p>
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-full bg-[#D62828]/20 flex items-center justify-center flex-shrink-0">
+                  <Clock className="w-5 h-5 text-[#D62828]" />
+                </div>
+                <div>
+                  <h3 class="font-semibold text-[#1a1a1a]">Response Time</h3>
+                  <p class="text-gray-600">
+                    We typically respond within 24 hours
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-8 p-6 bg-white rounded-sm">
+              <h3 class="font-[Rajdhani] font-bold uppercase text-[#1a1a1a] mb-3">Service Area</h3>
+              <p class="text-gray-600 text-sm">
+                We proudly serve Greater Cincinnati, including Hamilton, Butler, Warren, and Clermont counties in Ohio, as well as Northern Kentucky and Southeast Indiana.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Quote Form (Jobber) -->
+          <div class="lg:col-span-2">
+            <div class="bg-white rounded-sm p-8 shadow-sm min-h-[600px]">
+              <div id="60c0264f-d39f-4904-a629-feefafb5697a-2253487"></div>
+              <link rel="stylesheet" href="https://d3ey4dbjkt2f6s.cloudfront.net/assets/external/work_request_embed.css" media="screen" />
+              <script src="https://d3ey4dbjkt2f6s.cloudfront.net/assets/static_link/work_request_embed_snippet.js" clienthub_id="60c0264f-d39f-4904-a629-feefafb5697a-2253487" form_url="https://clienthub.getjobber.com/client_hubs/60c0264f-d39f-4904-a629-feefafb5697a/public/work_request/embedded_work_request_form?form_id=2253487"></script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

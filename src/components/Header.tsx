@@ -1,0 +1,200 @@
+import { useState } from 'react';
+import { Menu, X, ChevronDown, Phone } from 'lucide-react';
+
+const services = [
+  { name: 'Excavation', href: '/services/residential/excavation' },
+  { name: 'Land Clearing', href: '/services/residential/land-clearing' },
+  { name: 'Grading & Leveling', href: '/services/residential/grading' },
+  { name: 'Drainage Solutions', href: '/services/residential/drainage' },
+  { name: 'Retaining Walls', href: '/services/residential/retaining-walls' },
+  { name: 'Demolition', href: '/services/residential/demolition' },
+  { name: 'Driveways & Sidewalks', href: '/services/residential/driveways' },
+  { name: 'Foundation Work', href: '/services/residential/foundation' },
+  { name: 'Concrete Removal', href: '/services/residential/concrete-removal' },
+  { name: 'Pool Removal', href: '/services/residential/pool-removal' },
+  { name: 'Ponds & Water Features', href: '/services/residential/pond' },
+  { name: 'Septic Systems', href: '/services/residential/septic' },
+  { name: 'Lot Preparation', href: '/services/residential/lot-prep' },
+  { name: 'Stump Removal', href: '/services/residential/stump-removal' },
+  { name: 'Erosion Control', href: '/services/residential/erosion-control' },
+  { name: 'Snow Removal', href: '/services/residential/snow-removal' },
+  { name: 'Underground Utilities', href: '/services/residential/utilities' },
+];
+
+export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
+
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#171717]/92 backdrop-blur-md border-b border-white/10 shadow-2xl">
+      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          <a href="/" className="flex-shrink-0">
+            <img 
+              src="/images/cardinal-logo-horizontal-dark.png" 
+              alt="Cardinal Dirtworks" 
+              className="h-12 sm:h-14 w-auto"
+            />
+          </a>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center space-x-7">
+            <a href="/" className="text-white hover:text-[#D62828] transition font-[Rajdhani] uppercase tracking-wide font-bold text-sm">
+              Home
+            </a>
+            
+            {/* Services Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
+            >
+              <button className="flex items-center text-white hover:text-[#D62828] transition font-[Rajdhani] uppercase tracking-wide font-bold text-sm">
+                Services
+                <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {servicesOpen && (
+                <div className="absolute top-full left-0 pt-2 w-[500px]">
+                  <div className="bg-[#171717] rounded-sm shadow-2xl py-3 px-2 border border-white/10 grid grid-cols-2 gap-0">
+                    {services.map((service) => (
+                      <a
+                        key={service.href}
+                        href={service.href}
+                        className="block px-3 py-2 text-gray-300 hover:text-[#D62828] hover:bg-white/5 transition rounded-sm text-sm"
+                      >
+                        {service.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* About Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setAboutOpen(true)}
+              onMouseLeave={() => setAboutOpen(false)}
+            >
+              <a href="/about" className="flex items-center text-white hover:text-[#D62828] transition font-[Rajdhani] uppercase tracking-wide font-bold text-sm">
+                About
+                <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${aboutOpen ? 'rotate-180' : ''}`} />
+              </a>
+              
+              {aboutOpen && (
+                <div className="absolute top-full left-0 pt-2 w-48">
+                  <div className="bg-[#171717] rounded-sm shadow-2xl py-2 border border-white/10">
+                    <a href="/about" className="block px-4 py-2 text-gray-300 hover:text-[#D62828] hover:bg-white/5 transition">Our Story</a>
+                    <a href="/reviews" className="block px-4 py-2 text-gray-300 hover:text-[#D62828] hover:bg-white/5 transition">Reviews</a>
+                    <a href="/faq" className="block px-4 py-2 text-gray-300 hover:text-[#D62828] hover:bg-white/5 transition">FAQ</a>
+                    <a href="/careers" className="block px-4 py-2 text-gray-300 hover:text-[#D62828] hover:bg-white/5 transition">Careers</a>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <a href="/portfolio" className="text-white hover:text-[#D62828] transition font-[Rajdhani] uppercase tracking-wide font-bold text-sm">
+              Our Work
+            </a>
+
+            <a href="/contact" className="text-white hover:text-[#D62828] transition font-[Rajdhani] uppercase tracking-wide font-bold text-sm">
+              Contact
+            </a>
+          </div>
+
+          {/* Desktop CTA */}
+          <div className="hidden lg:flex items-center space-x-4">
+            <a href="tel:5139279675" className="flex items-center text-white hover:text-[#D62828] transition">
+              <Phone className="h-4 w-4 mr-2" />
+              (513) 927-9675
+            </a>
+            <a 
+              href="/get-a-quote" 
+              className="bg-[#D62828] text-white px-5 py-2.5 rounded-sm font-bold hover:bg-[#E63946] transition font-[Rajdhani] uppercase tracking-wide"
+            >
+              Get a Quote
+            </a>
+          </div>
+
+          <div className="flex lg:hidden items-center gap-2">
+            <a 
+              href="/get-a-quote" 
+              className="bg-[#D62828] text-white px-4 py-2 rounded-sm font-bold text-sm font-[Rajdhani] uppercase"
+            >
+              Free Quote
+            </a>
+            <button
+              className="text-white p-2"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden pb-6">
+            <div className="flex flex-col space-y-4">
+              <a href="/" className="text-white hover:text-[#D62828] transition font-medium py-2">Home</a>
+              
+              <div>
+                <button
+                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                  className="flex items-center justify-between w-full text-white hover:text-[#D62828] transition font-medium py-2"
+                >
+                  Services
+                  <ChevronDown className={`h-4 w-4 transition-transform ${mobileServicesOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {mobileServicesOpen && (
+                  <div className="pl-4 mt-2 space-y-2 border-l-2 border-[#D62828]">
+                    {services.map((service) => (
+                      <a key={service.href} href={service.href} className="block text-gray-300 hover:text-[#D62828] transition py-1">
+                        {service.name}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div>
+                <button
+                  onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
+                  className="flex items-center justify-between w-full text-white hover:text-[#D62828] transition font-medium py-2"
+                >
+                  About
+                  <ChevronDown className={`h-4 w-4 transition-transform ${mobileAboutOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {mobileAboutOpen && (
+                  <div className="pl-4 mt-2 space-y-2 border-l-2 border-[#D62828]">
+                    <a href="/about" className="block text-gray-300 hover:text-[#D62828] transition py-1">Our Story</a>
+                    <a href="/reviews" className="block text-gray-300 hover:text-[#D62828] transition py-1">Reviews</a>
+                    <a href="/faq" className="block text-gray-300 hover:text-[#D62828] transition py-1">FAQ</a>
+                    <a href="/careers" className="block text-gray-300 hover:text-[#D62828] transition py-1">Careers</a>
+                  </div>
+                )}
+              </div>
+
+              <a href="/portfolio" className="text-white hover:text-[#D62828] transition font-medium py-2">Our Work</a>
+              <a href="/contact" className="text-white hover:text-[#D62828] transition font-medium py-2">Contact</a>
+              
+              <div className="pt-4 space-y-3">
+                <a href="tel:5139279675" className="flex items-center text-white hover:text-[#D62828] transition">
+                  <Phone className="h-4 w-4 mr-2" />
+                  (513) 927-9675
+                </a>
+                <a href="/get-a-quote" className="block text-center bg-[#D62828] text-white px-5 py-3 rounded font-semibold hover:bg-[#E63946] transition font-[Rajdhani]">
+                  Get a Quote
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
+      </nav>
+    </header>
+  );
+}

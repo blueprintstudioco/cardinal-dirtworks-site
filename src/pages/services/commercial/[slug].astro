@@ -1,0 +1,451 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header';
+import Footer from '../../../components/Footer.astro';
+import FAQ from '../../../components/FAQ';
+import { commercialServices, type ServiceData } from '../../../data/services';
+import { CheckCircle, ArrowRight, Star, Shield, Clock, Award, Phone, MapPin } from 'lucide-react';
+import SituationIcon from '../../../components/icons/SituationIcon';
+import AnimateOnScroll from '../../../components/AnimateOnScroll';
+
+export function getStaticPaths() {
+  return commercialServices.map(service => ({
+    params: { slug: service.slug },
+    props: { service }
+  }));
+}
+
+interface Props {
+  service: ServiceData;
+}
+
+const { service } = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": service.title,
+  "description": service.description,
+  "provider": {
+    "@type": "HomeAndConstructionBusiness",
+    "name": "Cardinal Dirtworks",
+    "telephone": "+1-513-927-9675",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1481 SR 28, Suite 901",
+      "addressLocality": "Loveland",
+      "addressRegion": "OH",
+      "postalCode": "45140",
+      "addressCountry": "US"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "50"
+    }
+  },
+  "areaServed": ["Greater Cincinnati", "Northern Kentucky", "Southeast Indiana"]
+};
+
+const hasSituations = service.situations && service.situations.length > 0;
+const hasGallery = service.galleryImages && service.galleryImages.length > 0;
+const hasExpectations = service.expectations;
+const hasTestimonial = service.testimonial;
+---
+
+<Layout 
+  title={`${service.title} | Cardinal Dirtworks | Cincinnati`}
+  description={service.metaDescription}
+  schema={schema}
+>
+  <Header client:load />
+  
+  <main class="pt-20">
+    <!-- ═══════════ HERO ═══════════ -->
+    <section class="relative overflow-hidden bg-[#171717]" style="height: 56vh; min-height: 430px;">
+      {service.heroVideo ? (
+        <video
+          class="absolute inset-0 w-full h-full object-cover"
+          autoplay muted loop playsinline
+        >
+          <source src={service.heroVideo} type="video/mp4" />
+        </video>
+      ) : (
+        <img 
+          src={service.image} 
+          alt={service.title}
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+      )}
+      <div class="absolute inset-0 bg-black/65"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_72%_38%,rgba(214,40,40,0.20),transparent_28%),linear-gradient(90deg,#171717_0%,rgba(17,17,17,0.88)_42%,rgba(17,17,17,0.38)_100%)]"></div>
+      <div class="absolute inset-0 cardinal-grid opacity-25"></div>
+
+      <div class="relative h-full flex flex-col justify-end container mx-auto px-4 sm:px-6 lg:px-8 pb-10">
+        <!-- Trust badges -->
+        <div class="flex items-center gap-2 mb-4">
+          <div class="flex">
+            {[1,2,3,4,5].map(() => (
+              <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+            ))}
+          </div>
+          <span class="text-white text-sm font-medium">5.0 from 50+ reviews</span>
+        </div>
+
+        <div class="inline-block bg-white/20 text-white text-xs font-[Rajdhani] font-bold uppercase uppercase tracking-widest px-3 py-1 rounded mb-3 backdrop-blur-sm w-fit">
+          Commercial
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[Rajdhani] font-bold uppercase text-white mb-4 drop-shadow-lg">
+          {service.title}
+        </h1>
+        <p class="text-lg text-gray-200 max-w-2xl drop-shadow">
+          {service.description}
+        </p>
+        
+        <div class="flex flex-wrap gap-3 mt-4 mb-6">
+          <div class="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded text-sm">
+            <Shield className="w-3.5 h-3.5 text-[#D62828]" />
+            <span class="text-white">Licensed & Insured</span>
+          </div>
+          <div class="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded text-sm">
+            <Clock className="w-3.5 h-3.5 text-[#D62828]" />
+            <span class="text-white">Same-Week Scheduling</span>
+          </div>
+          <div class="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded text-sm">
+            <Award className="w-3.5 h-3.5 text-[#D62828]" />
+            <span class="text-white">Free Quotes</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="/get-a-quote" class="btn-primary text-base">
+            Get a Free Quote →
+          </a>
+          <a href="tel:5139279675" class="btn-secondary text-base">
+            <Phone className="w-4 h-4 mr-2" />
+            (513) 927-9675
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ COMMON SITUATIONS — "Is this right for you?" ═══════════ -->
+    {hasSituations ? (
+      <section class="py-16 md:py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="text-3xl md:text-4xl font-[Rajdhani] font-bold uppercase text-center text-[#1a1a1a] mb-4">
+            Sound Like Your Situation?
+          </h2>
+          <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Here are some common reasons Cincinnati businesses call us for {service.shortTitle.toLowerCase()}
+          </p>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            {service.situations!.map((situation, i) => (
+              <AnimateOnScroll client:visible delay={i * 0.1}>
+                <div class="bg-[#f5f5f0] rounded-sm border border-black/10 p-6 border border-gray-100 h-full">
+                  <SituationIcon client:visible icon={situation.icon} size={32} className="text-[#D62828] mb-3" />
+                  <h3 class="font-[Rajdhani] font-bold uppercase text-lg text-[#1a1a1a] mb-2">{situation.title}</h3>
+                  <p class="text-gray-600 text-sm leading-relaxed">{situation.description}</p>
+                </div>
+              </AnimateOnScroll>
+            ))}
+          </div>
+
+          <div class="text-center mt-10">
+            <a href="/get-a-quote" class="btn-primary text-base">
+              Get a Free Quote →
+            </a>
+          </div>
+        </div>
+      </section>
+    ) : (
+      <!-- Fallback: use fullDescription if no situations defined yet -->
+      <section class="py-16 md:py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-[Rajdhani] font-bold uppercase text-center text-[#1a1a1a] mb-8">
+              About This Service
+            </h2>
+            <div class="prose prose-lg">
+              {service.fullDescription.slice(0, 3).map((paragraph) => (
+                <p class="text-gray-600 mb-6 text-lg leading-relaxed">{paragraph}</p>
+              ))}
+            </div>
+            <div class="text-center mt-8">
+              <a href="/get-a-quote" class="btn-primary text-base">
+                Get a Free Quote →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- ═══════════ PROJECT GALLERY ═══════════ -->
+    {hasGallery && (
+      <section class="py-16 md:py-20 bg-[#f5f5f0]">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="text-3xl md:text-4xl font-[Rajdhani] font-bold uppercase text-center text-[#1a1a1a] mb-4">
+            Our {service.shortTitle} Work
+          </h2>
+          <p class="text-center text-gray-600 mb-10">
+            Recent projects across Greater Cincinnati
+          </p>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+            {service.galleryImages!.map((img, i) => (
+              <div class="rounded-sm overflow-hidden aspect-[4/3]">
+                <img 
+                  src={img} 
+                  alt={`${service.shortTitle} project ${i + 1}`}
+                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+          <div class="text-center mt-8">
+            <a href="/portfolio" class="text-[#1a1a1a] font-[Rajdhani] font-semibold hover:text-[#D62828] transition underline text-lg">
+              View All Projects →
+            </a>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- ═══════════ SEO CONTENT — Detailed service description ═══════════ -->
+    <section class="py-16 md:py-20 bg-white">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <div class="grid md:grid-cols-3 gap-12">
+            <!-- Main content column -->
+            <div class="md:col-span-2">
+              <h2 class="text-3xl md:text-4xl font-[Rajdhani] font-bold uppercase text-[#1a1a1a] mb-6">
+                {service.title} in Cincinnati
+              </h2>
+              <div class="prose prose-lg max-w-none">
+                {service.fullDescription.map((paragraph) => (
+                  <p class="text-gray-600 mb-5 leading-relaxed">{paragraph}</p>
+                ))}
+              </div>
+            </div>
+            
+            <!-- Sidebar — Why Cardinal Dirtworks -->
+            <div class="md:col-span-1">
+              <div class="bg-[#171717] rounded-sm p-6 sticky top-24">
+                <h3 class="text-xl font-[Rajdhani] font-bold uppercase text-white mb-4">
+                  Why Choose Cardinal Dirtworks
+                </h3>
+                <ul class="space-y-3">
+                  <li class="flex items-start gap-3">
+                    <SituationIcon client:visible icon="wrench" size={18} className="text-[#D62828] flex-shrink-0 mt-1" />
+                    <span class="text-gray-300 text-sm">Right-sized equipment for every project</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <SituationIcon client:visible icon="home" size={18} className="text-[#D62828] flex-shrink-0 mt-1" />
+                    <span class="text-gray-300 text-sm">Experienced with Cincinnati's clay soils</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <SituationIcon client:visible icon="scale" size={18} className="text-[#D62828] flex-shrink-0 mt-1" />
+                    <span class="text-gray-300 text-sm">Transparent, upfront pricing</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <SituationIcon client:visible icon="zap" size={18} className="text-[#D62828] flex-shrink-0 mt-1" />
+                    <span class="text-gray-300 text-sm">Same-week scheduling available</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <SituationIcon client:visible icon="hard-hat" size={18} className="text-[#D62828] flex-shrink-0 mt-1" />
+                    <span class="text-gray-300 text-sm">Licensed, insured & OUPS compliant</span>
+                  </li>
+                </ul>
+                <a href="/get-a-quote" class="block mt-6 text-center bg-[#D62828] text-[#1a1a1a] font-[Rajdhani] font-semibold py-3 rounded hover:bg-[#E63946] transition">
+                  Get a Free Quote
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ WHAT TO EXPECT ═══════════ -->
+    {hasExpectations ? (
+      <section class="py-16 md:py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="text-3xl md:text-4xl font-[Rajdhani] font-bold uppercase text-center text-[#1a1a1a] mb-12">
+            What to Expect
+          </h2>
+          
+          <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <AnimateOnScroll client:visible delay={0}>
+              <div class="text-center bg-[#f5f5f0] rounded-sm border border-black/10 p-8">
+                <SituationIcon client:visible icon="wrench" size={32} className="text-[#D62828] mx-auto mb-3 flex justify-center" />
+                <div class="text-2xl font-[Rajdhani] font-bold uppercase text-[#1a1a1a] mb-1">Timeline</div>
+                <p class="text-gray-600">{service.expectations!.timeline}</p>
+              </div>
+            </AnimateOnScroll>
+            <AnimateOnScroll client:visible delay={0.1}>
+              <div class="text-center bg-[#f5f5f0] rounded-sm border border-black/10 p-8">
+                <SituationIcon client:visible icon="scale" size={32} className="text-[#D62828] mx-auto mb-3 flex justify-center" />
+                <div class="text-2xl font-[Rajdhani] font-bold uppercase text-[#1a1a1a] mb-1">Typical Cost</div>
+                <p class="text-gray-600">{service.expectations!.priceRange}</p>
+              </div>
+            </AnimateOnScroll>
+            <AnimateOnScroll client:visible delay={0.2}>
+              <div class="text-center bg-[#f5f5f0] rounded-sm border border-black/10 p-8">
+                <SituationIcon client:visible icon="home" size={32} className="text-[#D62828] mx-auto mb-3 flex justify-center" />
+                <div class="text-2xl font-[Rajdhani] font-bold uppercase text-[#1a1a1a] mb-1">Included</div>
+                <ul class="text-gray-600 text-sm text-left space-y-1">
+                  {service.expectations!.details.map((detail) => (
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#D62828] mt-0.5">✓</span>
+                      <span>{detail}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </AnimateOnScroll>
+          </div>
+        </div>
+      </section>
+    ) : (
+      <!-- Fallback: original "What's Included" -->
+      <section class="py-16 md:py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="text-3xl md:text-4xl font-[Rajdhani] font-bold uppercase text-center text-[#1a1a1a] mb-12">
+            What's Included
+          </h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+            {service.included.map((item) => (
+              <div class="flex items-start gap-3 bg-[#f5f5f0] p-4 rounded-sm">
+                <CheckCircle className="w-5 h-5 text-[#D62828] flex-shrink-0 mt-0.5" />
+                <span class="text-gray-700">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- ═══════════ OUR PROCESS ═══════════ -->
+    <section class="py-16 md:py-20 bg-[#171717]">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-[Rajdhani] font-bold uppercase text-center text-white mb-4">
+          Simple Process, Professional Results
+        </h2>
+        <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
+          How we approach every {service.shortTitle.toLowerCase()} project
+        </p>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+          {service.process.map((step, index) => (
+            <div class="relative">
+              <div class="text-6xl font-[Rajdhani] font-bold uppercase text-[#D62828]/20 absolute -top-4 -left-2">
+                {String(index + 1).padStart(2, '0')}
+              </div>
+              <div class="relative pt-8">
+                <h3 class="text-xl font-[Rajdhani] font-bold uppercase text-white mb-3">{step.step}</h3>
+                <p class="text-gray-400 leading-relaxed">{step.description}</p>
+              </div>
+              {index < service.process.length - 1 && (
+                <div class="hidden lg:block absolute top-12 -right-4">
+                  <ArrowRight className="w-6 h-6 text-[#D62828]/40" />
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        <div class="text-center mt-12">
+          <a href="/get-a-quote" class="btn-primary text-base">
+            Get a Free Quote →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ TESTIMONIAL ═══════════ -->
+    {hasTestimonial && (
+      <section class="py-16 md:py-20 bg-[#f5f5f0]">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl mx-auto text-center">
+            <div class="flex justify-center mb-4">
+              {[1,2,3,4,5].map(() => (
+                <Star className="w-6 h-6 text-yellow-400 fill-yellow-400" />
+              ))}
+            </div>
+            <blockquote class="text-xl md:text-2xl text-gray-700 leading-relaxed italic mb-6">
+              "{service.testimonial!.quote}"
+            </blockquote>
+            <div>
+              <p class="font-[Rajdhani] font-bold uppercase text-[#1a1a1a] text-lg">{service.testimonial!.name}</p>
+              <p class="text-gray-500 flex items-center justify-center gap-1">
+                <MapPin className="w-4 h-4" />
+                {service.testimonial!.location} — {service.testimonial!.project}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- ═══════════ FAQ ═══════════ -->
+    <section class="py-16 md:py-20 bg-white">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-[Rajdhani] font-bold uppercase text-center text-[#1a1a1a] mb-4">
+          Common Questions
+        </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          Everything you need to know about our {service.shortTitle.toLowerCase()} services
+        </p>
+        
+        <div class="max-w-3xl mx-auto">
+          <FAQ items={service.faqs} client:load />
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ SERVICE AREA ═══════════ -->
+    <section class="py-10 bg-[#f5f5f0]">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-xl font-[Rajdhani] font-bold uppercase text-center text-[#1a1a1a] mb-4">
+          Serving Greater Cincinnati & Northern Kentucky
+        </h2>
+        <p class="text-center text-gray-500 max-w-3xl mx-auto text-sm leading-relaxed">
+          Loveland • Milford • Anderson Township • Mason • West Chester • Liberty Township • Lebanon • Indian Hill • Hyde Park • Madeira • Blue Ash • Montgomery • Batavia • Goshen • Bethel • Amelia • Florence, KY • Erlanger, KY • Burlington, KY
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════ FINAL CTA ═══════════ -->
+    <section class="py-16 md:py-20 bg-[#D62828]">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl md:text-5xl font-[Rajdhani] font-bold uppercase text-[#1a1a1a] mb-4">
+          Ready to Get Started?
+        </h2>
+        <p class="text-xl text-[#1a1a1a]/80 mb-2 max-w-2xl mx-auto">
+          Tell us about your {service.shortTitle.toLowerCase()} project. Free quote within 24 hours.
+        </p>
+        <p class="text-[#1a1a1a]/60 mb-8">
+          No obligation. No pressure. Just a straight answer.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+          <a href="/get-a-quote" class="inline-flex items-center justify-center px-10 py-5 bg-[#171717] text-white font-[Rajdhani] font-semibold text-xl rounded hover:bg-black transition">
+            Get Your Free Quote
+          </a>
+          <a href="tel:5139279675" class="inline-flex items-center justify-center px-10 py-5 bg-transparent border-2 border-[#1a1a1a] text-[#1a1a1a] font-[Rajdhani] font-semibold text-xl rounded hover:bg-[#171717] hover:text-white transition">
+            <Phone className="w-5 h-5 mr-2" />
+            (513) 927-9675
+          </a>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-[#1a1a1a]/70 text-sm">
+          <span class="flex items-center gap-1"><Shield className="w-4 h-4" /> Licensed & Insured</span>
+          <span class="flex items-center gap-1"><Star className="w-4 h-4 fill-current" /> 50+ 5-Star Reviews</span>
+          <span class="flex items-center gap-1"><Clock className="w-4 h-4" /> Same-Week Scheduling</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

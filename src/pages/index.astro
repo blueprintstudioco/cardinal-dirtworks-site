@@ -1,0 +1,387 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer.astro';
+import FAQ from '../components/FAQ';
+
+const faqItems = [
+  {
+    question: "How do I get a quote for my project?",
+    answer: "Fill out the quote form or call (513) 927-9675. We'll review the project, schedule a site visit when needed, and get you a clear estimate before work starts."
+  },
+  {
+    question: "What areas do you serve?",
+    answer: "Cardinal Dirtworks serves Greater Cincinnati, including Hamilton, Butler, Warren, and Clermont counties, along with Northern Kentucky and Southeast Indiana."
+  },
+  {
+    question: "Are you licensed and insured?",
+    answer: "Yes. Cardinal Dirtworks is licensed and insured, with professional equipment and experienced operators on every project."
+  },
+  {
+    question: "How long does a typical project take?",
+    answer: "Small residential jobs can often be completed in 1-2 days. Larger excavation, drainage, grading, and land clearing projects may take several days or more depending on scope, access, weather, and site conditions."
+  },
+  {
+    question: "Do you handle permits?",
+    answer: "We can help identify when permits may be needed and guide you through the process. Requirements vary by municipality and project type."
+  },
+  {
+    question: "What types of equipment do you use?",
+    answer: "We use excavators, skid steers, track loaders, forestry mulchers, dump trucks, grading equipment, and attachments matched to the project. The goal is to bring the right machine, not force the wrong one."
+  }
+];
+
+const serviceCards = [
+  { title: 'Excavation', kicker: 'Foundations, pools, ponds, trenching, and precision digging.', href: '/services/residential/excavation', image: '/images/residential/excavation.png' },
+  { title: 'Drainage', kicker: 'French drains, swales, grading, and water problems fixed at the source.', href: '/services/residential/drainage', image: '/images/residential/drainage.png' },
+  { title: 'Grading', kicker: 'Better slope, cleaner yards, stronger building pads, and usable ground.', href: '/services/residential/grading', image: '/images/residential/grading.png' },
+  { title: 'Land Clearing', kicker: 'Brush, overgrowth, small trees, and rough ground opened back up.', href: '/services/residential/land-clearing', image: '/images/residential/land-clearing.png' },
+  { title: 'Demolition', kicker: 'Sheds, garages, concrete, pools, and old structures removed safely.', href: '/services/residential/demolition', image: '/images/residential/demolition.png' },
+  { title: 'Driveways', kicker: 'Gravel, concrete prep, repair, replacement, and access improvements.', href: '/services/residential/driveways', image: '/images/residential/driveway.png' }
+];
+
+const problemCards = [
+  { problem: 'Wet backyard', fix: 'Drainage and grading that moves water where it belongs.' },
+  { problem: 'Bad slope', fix: 'Regrade the site so the property actually works.' },
+  { problem: 'Overgrown lot', fix: 'Clear the brush and make the ground usable again.' },
+  { problem: 'Build site prep', fix: 'Excavation, pads, access, and rough grading before construction.' },
+  { problem: 'Old concrete or pool', fix: 'Break it out, haul it off, backfill, and reshape the space.' },
+  { problem: 'Failing driveway', fix: 'Repair the base, improve drainage, and build access that holds up.' }
+];
+
+const videoSlides = [
+  { label: 'Excavation', title: 'Cutting and shaping the site', src: '/videos/excavator-main.mp4', poster: '/images/residential/excavation.png' },
+  { label: 'Drainage', title: 'Solving water problems', src: '/videos/drainage-aerial.mp4', poster: '/images/residential/drainage.png' },
+  { label: 'Land Clearing', title: 'Opening overgrown ground', src: '/videos/drone-land-clearing.mp4', poster: '/images/residential/land-clearing.png' },
+  { label: 'Concrete', title: 'Crew work, prep, and finish', src: '/videos/concrete-crew.mp4', poster: '/images/residential/concrete-removal.png' },
+  { label: 'Grading', title: 'Heavy equipment, clean results', src: '/videos/bulldozer-tracking.mp4', poster: '/images/residential/grading.png' }
+];
+
+const beforeAfter = [
+  { type: 'Drainage Fix', before: '/images/portfolio/drainage-before-1.png', after: '/images/portfolio/drainage-after-1.png', copy: 'Standing water redirected with the right grade and drainage path.' },
+  { type: 'Land Clearing', before: '/images/portfolio/clearing-before-1.png', after: '/images/portfolio/clearing-after-1.png', copy: 'Overgrowth removed so the property can actually be used.' },
+  { type: 'Driveway Work', before: '/images/portfolio/driveway-before-1.png', after: '/images/portfolio/driveway-after-1.png', copy: 'A rough entrance turned into clean, durable access.' }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "Cardinal Dirtworks",
+  "description": "Greater Cincinnati excavation, drainage, grading, land clearing, demolition, driveway, and sitework contractor.",
+  "url": "https://cardinaldirtworks.com",
+  "telephone": "+1-513-927-9675",
+  "email": "team@cardinaldirtworks.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1481 SR 28, Suite 901",
+    "addressLocality": "Loveland",
+    "addressRegion": "OH",
+    "postalCode": "45140",
+    "addressCountry": "US"
+  },
+  "areaServed": ["Greater Cincinnati", "Northern Kentucky", "Southeast Indiana"],
+  "priceRange": "$$"
+};
+---
+
+<Layout title="Cardinal Dirtworks | Excavation, Drainage & Sitework | Greater Cincinnati" schema={schema}>
+  <Header client:load />
+
+  <main class="bg-[#171717] text-white overflow-hidden">
+    <!-- Hero -->
+    <section class="relative min-h-[92vh] flex items-center pt-24 pb-16 overflow-hidden">
+      <div class="absolute inset-0">
+        <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline poster="/images/hero-excavator.png">
+          <source src="/videos/hero-reel.mp4" type="video/mp4" />
+        </video>
+        <div class="absolute inset-0 bg-black/65"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_72%_38%,rgba(214,40,40,0.24),transparent_28%),linear-gradient(90deg,#171717_0%,rgba(17,17,17,0.88)_34%,rgba(17,17,17,0.35)_100%)]"></div>
+        <div class="absolute inset-0 cardinal-grid opacity-30"></div>
+      </div>
+
+      <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl">
+          <div class="inline-flex items-center gap-3 border border-[#D62828]/40 bg-black/35 px-4 py-2 rounded-full mb-6 backdrop-blur-sm">
+            <span class="h-2 w-2 rounded-full bg-[#D62828]"></span>
+            <span class="font-[Rajdhani] uppercase tracking-[0.25em] text-sm text-[#D62828]">Greater Cincinnati Sitework</span>
+          </div>
+
+          <h1 class="font-[Rajdhani] font-bold uppercase leading-[0.9] tracking-tight text-5xl sm:text-6xl md:text-8xl lg:text-9xl drop-shadow-2xl">
+            Heavy Work.<br />
+            <span class="text-[#D62828]">Light Touch.</span>
+          </h1>
+
+          <p class="mt-7 max-w-2xl text-lg md:text-2xl text-zinc-200 leading-relaxed">
+            Excavation, drainage, grading, land clearing, and demolition for homeowners who need the job handled correctly the first time.
+          </p>
+
+          <div class="mt-10 flex flex-col sm:flex-row gap-4">
+            <a href="/get-a-quote" class="inline-flex items-center justify-center bg-[#D62828] text-[#171717] px-8 py-4 rounded-sm font-[Rajdhani] font-bold text-xl uppercase tracking-wide hover:bg-[#E63946] transition shadow-[0_0_35px_rgba(214,40,40,0.28)]">
+              Get a Free Quote
+            </a>
+            <a href="tel:5139279675" class="inline-flex items-center justify-center border-2 border-white/80 text-white px-8 py-4 rounded-sm font-[Rajdhani] font-bold text-xl uppercase tracking-wide hover:bg-white hover:text-[#171717] transition">
+              Call (513) 927-9675
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proof Strip -->
+    <section class="relative border-y border-white/10 bg-[#171717]">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
+          <div class="py-4 sm:px-6">
+            <div class="font-[Rajdhani] text-3xl font-bold text-[#D62828]">Licensed</div>
+            <p class="text-zinc-400">Insured crews and professional equipment</p>
+          </div>
+          <div class="py-4 sm:px-6">
+            <div class="font-[Rajdhani] text-3xl font-bold text-[#D62828]">Local</div>
+            <p class="text-zinc-400">Loveland based, serving Greater Cincinnati</p>
+          </div>
+          <div class="py-4 sm:px-6">
+            <div class="font-[Rajdhani] text-3xl font-bold text-[#D62828]">Heavy</div>
+            <p class="text-zinc-400">Excavators, track loaders, mulchers, trucks</p>
+          </div>
+          <div class="py-4 sm:px-6">
+            <div class="font-[Rajdhani] text-3xl font-bold text-[#D62828]">Clear</div>
+            <p class="text-zinc-400">Free quotes before we break ground</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Slider -->
+    <section class="py-20 md:py-28 bg-[#171717] relative">
+      <div class="absolute inset-0 cardinal-topo opacity-20"></div>
+      <div class="relative container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
+          <div>
+            <p class="font-[Rajdhani] uppercase tracking-[0.28em] text-[#D62828] mb-3">Real field footage</p>
+            <h2 class="font-[Rajdhani] uppercase font-bold text-4xl md:text-6xl leading-none">See the Work Before You Hire Us</h2>
+          </div>
+          <p class="max-w-xl text-zinc-400 text-lg">Excavation, drainage, clearing, grading, and concrete work from real jobs around Greater Cincinnati. No stock-photo fantasy. Just machines, dirt, and finished ground.</p>
+        </div>
+
+        <div class="video-rail flex gap-5 overflow-x-auto snap-x snap-mandatory pb-5 -mx-4 px-4">
+          {videoSlides.map((slide) => (
+            <article class="snap-start shrink-0 w-[82vw] sm:w-[520px] group relative overflow-hidden rounded-sm border border-white/10 bg-[#1f1f1f] shadow-2xl">
+              <div class="aspect-video relative overflow-hidden">
+                <video class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" autoplay muted loop playsinline poster={slide.poster}>
+                  <source src={slide.src} type="video/mp4" />
+                </video>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+                <div class="absolute top-4 left-4 bg-[#D62828] text-[#171717] font-[Rajdhani] font-bold uppercase tracking-wide px-3 py-1 text-sm">{slide.label}</div>
+                <h3 class="absolute bottom-5 left-5 right-5 font-[Rajdhani] uppercase font-bold text-3xl md:text-4xl leading-none">{slide.title}</h3>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Problems -->
+    <section class="py-20 md:py-28 bg-[#f5f5f0] text-[#171717]">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mb-12">
+          <p class="font-[Rajdhani] uppercase tracking-[0.28em] text-[#D62828] mb-3">What we fix</p>
+          <h2 class="font-[Rajdhani] uppercase font-bold text-4xl md:text-6xl leading-none">Wet Yard? Bad Grade? Overgrown Lot?</h2>
+          <p class="mt-5 text-lg text-zinc-700">Homeowners do not wake up wanting excavation. They call because the property has a problem. We bring the machines and the plan to solve it.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {problemCards.map((card) => (
+            <div class="group bg-white border border-black/10 p-6 rounded-sm shadow-sm hover:-translate-y-1 hover:shadow-xl transition">
+              <div class="text-[#D62828] font-[Rajdhani] text-5xl font-bold leading-none mb-5">//</div>
+              <h3 class="font-[Rajdhani] uppercase text-3xl font-bold mb-3">{card.problem}</h3>
+              <p class="text-zinc-700 leading-relaxed">{card.fix}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-20 md:py-28 bg-[#171717] relative">
+      <div class="absolute inset-0 cardinal-grid opacity-20"></div>
+      <div class="relative container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+          <div>
+            <p class="font-[Rajdhani] uppercase tracking-[0.28em] text-[#D62828] mb-3">Core services</p>
+            <h2 class="font-[Rajdhani] uppercase font-bold text-4xl md:text-6xl leading-none">Built for Heavy Residential Sitework</h2>
+          </div>
+          <a href="/get-a-quote" class="hidden lg:inline-flex items-center justify-center bg-[#D62828] text-[#171717] px-7 py-3 rounded-sm font-[Rajdhani] font-bold text-lg uppercase hover:bg-[#E63946] transition">Start a Quote</a>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {serviceCards.map((service) => (
+            <a href={service.href} class="group relative overflow-hidden min-h-[360px] rounded-sm border border-white/10 bg-[#222] block shadow-xl">
+              <img src={service.image} alt={service.title} class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-110" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/10"></div>
+              <div class="absolute inset-x-0 bottom-0 p-6">
+                <div class="h-1 w-14 bg-[#D62828] mb-5 transition-all group-hover:w-24"></div>
+                <h3 class="font-[Rajdhani] uppercase text-4xl font-bold leading-none mb-3">{service.title}</h3>
+                <p class="text-zinc-300 mb-5">{service.kicker}</p>
+                <span class="font-[Rajdhani] uppercase font-bold text-[#D62828] tracking-wide">View service →</span>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div class="mt-8 text-zinc-400 leading-relaxed">
+          Plus: <a href="/services/residential/concrete-removal" class="text-[#D62828] hover:underline">Concrete Removal</a> ·
+          <a href="/services/residential/septic" class="text-[#D62828] hover:underline"> Septic Systems</a> ·
+          <a href="/services/residential/pond" class="text-[#D62828] hover:underline"> Ponds</a> ·
+          <a href="/services/residential/lot-prep" class="text-[#D62828] hover:underline"> Lot Prep</a> ·
+          <a href="/services/residential/stump-removal" class="text-[#D62828] hover:underline"> Stump Removal</a> ·
+          <a href="/services/residential/erosion-control" class="text-[#D62828] hover:underline"> Erosion Control</a> ·
+          <a href="/services/residential/utilities" class="text-[#D62828] hover:underline"> Utilities</a> ·
+          <a href="/services/residential/snow-removal" class="text-[#D62828] hover:underline"> Snow Removal</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Before / After -->
+    <section class="py-20 md:py-28 bg-[#f5f5f0] text-[#171717]">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <p class="font-[Rajdhani] uppercase tracking-[0.28em] text-[#D62828] mb-3">Real results</p>
+          <h2 class="font-[Rajdhani] uppercase font-bold text-4xl md:text-6xl leading-none">Before Cardinal Dirtworks. After Cardinal Dirtworks.</h2>
+          <p class="mt-5 text-lg text-zinc-700">The best design on this site is the work itself. Show the mess, show the machine, show the finished property.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-6">
+          {beforeAfter.map((project) => (
+            <article class="bg-white border border-black/10 rounded-sm overflow-hidden shadow-lg">
+              <div class="grid grid-cols-2">
+                <div class="relative aspect-square overflow-hidden">
+                  <img src={project.before} alt={`${project.type} before`} class="w-full h-full object-cover" />
+                  <span class="absolute top-3 left-3 bg-black/80 text-white text-xs font-bold uppercase px-2 py-1">Before</span>
+                </div>
+                <div class="relative aspect-square overflow-hidden">
+                  <img src={project.after} alt={`${project.type} after`} class="w-full h-full object-cover" />
+                  <span class="absolute top-3 left-3 bg-[#D62828] text-[#171717] text-xs font-bold uppercase px-2 py-1">After</span>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="font-[Rajdhani] uppercase font-bold text-3xl mb-2">{project.type}</h3>
+                <p class="text-zinc-700">{project.copy}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="py-20 md:py-28 bg-[#171717]">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-center">
+          <div>
+            <p class="font-[Rajdhani] uppercase tracking-[0.28em] text-[#D62828] mb-3">Simple process</p>
+            <h2 class="font-[Rajdhani] uppercase font-bold text-4xl md:text-6xl leading-none mb-6">No Guesswork. No Runaround.</h2>
+            <p class="text-zinc-400 text-lg mb-8">Sitework gets expensive when the plan is vague. We walk the property, identify the issue, match the equipment to the work, and give you a clear path forward.</p>
+            <a href="/get-a-quote" class="inline-flex items-center justify-center bg-[#D62828] text-[#171717] px-8 py-4 rounded-sm font-[Rajdhani] font-bold text-xl uppercase hover:bg-[#E63946] transition">Request a Quote</a>
+          </div>
+          <div class="space-y-4">
+            {[
+              ['01', 'Walk the Site', 'We look at access, slope, soil, drainage, obstacles, and what the finished result needs to be.'],
+              ['02', 'Build the Plan', 'You get a clear scope, timeline, machine plan, and quote before equipment shows up.'],
+              ['03', 'Do the Work', 'We bring the right crew and equipment, protect the property, clean up, and leave it usable.']
+            ].map(([num, title, copy]) => (
+              <div class="grid grid-cols-[72px_1fr] gap-5 p-6 bg-white/[0.04] border border-white/10 rounded-sm">
+                <div class="font-[Rajdhani] text-5xl font-bold text-[#D62828] leading-none">{num}</div>
+                <div>
+                  <h3 class="font-[Rajdhani] uppercase text-3xl font-bold mb-2">{title}</h3>
+                  <p class="text-zinc-400">{copy}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="py-20 md:py-28 bg-[#171717]">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <p class="font-[Rajdhani] uppercase tracking-[0.28em] text-[#D62828] mb-3">Local proof</p>
+          <h2 class="font-[Rajdhani] uppercase font-bold text-4xl md:text-6xl leading-none">Trusted When the Job Gets Messy</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {[
+            ['Kevin M.', 'Anderson Township, OH', 'Basement Excavation', 'Tight access, clay soil, and a neighbor\'s fence about six feet from the dig. The kind of job that makes a lot of contractors nervous. These guys showed up with the right machine and nailed it.'],
+            ['Rachel & Tom F.', 'Milford, OH', 'Land Clearing', 'We bought a wooded lot and needed it cleared and rough-graded before our builder could start. Cardinal Dirtworks walked it with us, gave us a fair quote, and had a crew out within two weeks.'],
+            ['Brian S.', 'West Chester, OH', 'French Drain System', 'First heavy rain came through and the yard drained completely. Finally. Cardinal Dirtworks actually looked at the grade, figured out where the water was coming from, and fixed it.']
+          ].map(([name, location, project, quote]) => (
+            <article class="bg-[#222] border border-white/10 p-6 rounded-sm shadow-xl">
+              <div class="flex items-center gap-1 mb-5" aria-label="5 star review">
+                {[1,2,3,4,5].map(() => <span class="text-[#D62828]">★</span>)}
+              </div>
+              <p class="text-zinc-300 leading-relaxed mb-6">“{quote}”</p>
+              <div class="border-t border-white/10 pt-5">
+                <p class="font-[Rajdhani] uppercase text-2xl font-bold">{name}</p>
+                <p class="text-sm text-zinc-500 mb-3">{location}</p>
+                <span class="inline-block bg-[#D62828] text-[#171717] text-xs font-bold uppercase px-3 py-1">{project}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div class="text-center mt-10">
+          <a href="/reviews" class="font-[Rajdhani] uppercase font-bold text-[#D62828] text-xl hover:underline">Read all reviews →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20 md:py-28 bg-[#f5f5f0] text-[#171717]">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <p class="font-[Rajdhani] uppercase tracking-[0.28em] text-[#D62828] mb-3">Questions</p>
+          <h2 class="font-[Rajdhani] uppercase font-bold text-4xl md:text-6xl leading-none">Before We Break Ground</h2>
+        </div>
+        <div class="max-w-3xl mx-auto">
+          <FAQ items={faqItems} client:load />
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="relative py-20 md:py-28 bg-[#D62828] text-[#171717] overflow-hidden">
+      <div class="absolute inset-0 cardinal-grid-dark opacity-20"></div>
+      <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="font-[Rajdhani] uppercase tracking-[0.28em] mb-3">Ready to fix the property?</p>
+        <h2 class="font-[Rajdhani] uppercase font-bold text-5xl md:text-7xl leading-none mb-6">Let’s Make the Ground Work.</h2>
+        <p class="text-xl text-black/75 mb-9 max-w-2xl mx-auto">Tell us what is going wrong with the site. We’ll help figure out the right equipment, scope, and next step.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/get-a-quote" class="inline-flex items-center justify-center bg-[#171717] text-white px-8 py-4 rounded-sm font-[Rajdhani] font-bold text-xl uppercase hover:bg-black transition">Get Your Free Quote</a>
+          <a href="tel:5139279675" class="inline-flex items-center justify-center border-2 border-[#171717] text-[#171717] px-8 py-4 rounded-sm font-[Rajdhani] font-bold text-xl uppercase hover:bg-[#171717] hover:text-white transition">Call (513) 927-9675</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sticky mobile CTA -->
+    <div class="fixed bottom-0 left-0 right-0 z-50 grid grid-cols-2 border-t border-white/10 bg-[#171717]/95 backdrop-blur md:hidden">
+      <a href="tel:5139279675" class="py-4 text-center font-[Rajdhani] font-bold uppercase text-white">Call</a>
+      <a href="/get-a-quote" class="py-4 text-center font-[Rajdhani] font-bold uppercase bg-[#D62828] text-[#171717]">Get Quote</a>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+})} />

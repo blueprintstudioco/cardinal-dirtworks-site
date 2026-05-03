@@ -1,0 +1,280 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer.astro';
+import { ArrowRight, ClipboardList, DollarSign, HardHat, MapPin, Phone, Shield, Star, Truck } from 'lucide-react';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "mainEntity": {
+    "@type": "HomeAndConstructionBusiness",
+    "name": "Cardinal Dirtworks",
+    "description": "Greater Cincinnati's excavation, grading, drainage, demolition, and residential sitework team.",
+    "foundingDate": "2020",
+    "areaServed": ["Greater Cincinnati", "Northern Kentucky", "Southeast Indiana"]
+  }
+};
+
+const proofStats = [
+  { value: '150+', label: 'sitework projects completed' },
+  { value: '500+', label: 'acres cleared and reclaimed' },
+  { value: '10+', label: 'years around equipment and land work' },
+  { value: '5.0', label: 'reputation built on clean work' }
+];
+
+const differentiators = [
+  {
+    icon: Truck,
+    title: 'Right machine, right touch',
+    description: 'Heavy equipment when the job needs power. Smaller, controlled equipment when access, turf, trees, or nearby structures matter.'
+  },
+  {
+    icon: MapPin,
+    title: 'Built for Cincinnati ground',
+    description: 'Clay soil, steep yards, wet basements, tight driveways, hidden utilities, and drainage problems are normal here. We plan around them.'
+  },
+  {
+    icon: DollarSign,
+    title: 'Scope before speed',
+    description: 'A cheap quote gets expensive when the plan is vague. We talk through access, spoil, drainage, cleanup, and handoff before work starts.'
+  },
+  {
+    icon: ClipboardList,
+    title: 'A cleaner handoff',
+    description: 'The goal is not just moving dirt. It is leaving the property ready for the builder, landscaper, concrete crew, pool crew, or homeowner.'
+  }
+];
+
+const commitments = [
+  {
+    title: 'We find the constraint first',
+    description: 'Access, utilities, water, soil, slope, nearby structures, material movement, and cleanup all affect the price and result.'
+  },
+  {
+    title: 'We protect what should stay',
+    description: 'Good sitework is not just what gets removed or moved. It is what does not get damaged in the process.'
+  },
+  {
+    title: 'We communicate like adults',
+    description: 'Clear scope, clear expectations, and direct updates. No ghosting. No vague daily-rate guessing.'
+  },
+  {
+    title: 'We leave the next step easier',
+    description: 'Foundation, drainage, gravel, concrete, landscaping, or just a usable yard. The handoff matters.'
+  }
+];
+
+const standards = [
+  'Access route planned before equipment arrives',
+  'Drainage and grade considered before dirt moves',
+  'Utilities and keep-out zones respected',
+  'Spoil, debris, and cleanup included in the scope',
+  'Finish condition matched to the next phase'
+];
+---
+
+<Layout 
+  title="About Cardinal Dirtworks | Cincinnati Excavation & Sitework Experts" 
+  description="Meet Cardinal Dirtworks, Greater Cincinnati's excavation, grading, drainage, demolition, and residential sitework team. Heavy work with a light touch."
+  schema={schema}
+>
+  <Header client:load />
+  
+  <main class="pt-20 bg-[#f5f5f0]">
+    <!-- Hero Section -->
+    <section class="relative min-h-[78vh] bg-[#171717] text-white overflow-hidden flex items-center">
+      <div class="absolute inset-0">
+        <img src="/images/residential/excavation.png" alt="Cardinal Dirtworks equipment working on a residential site" class="w-full h-full object-cover opacity-45" />
+        <div class="absolute inset-0 bg-gradient-to-r from-[#171717] via-[#171717]/82 to-[#171717]/35"></div>
+        <div class="absolute inset-0 cardinal-grid opacity-60"></div>
+      </div>
+
+      <div class="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div class="grid lg:grid-cols-[1.08fr_0.92fr] gap-12 items-end">
+          <div>
+            <p class="kicker mb-4">About Cardinal Dirtworks</p>
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-[Rajdhani] font-bold uppercase leading-[0.85] tracking-tight mb-7">
+              Heavy Work.<br /><span class="text-[#D62828]">Light Touch.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 max-w-3xl leading-relaxed mb-8">
+              Excavation, drainage, grading, demolition, and site prep for homeowners who need the ground fixed without the property getting wrecked.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="/get-a-quote" class="btn-primary text-base">Get a Free Quote <ArrowRight className="w-5 h-5 ml-2" /></a>
+              <a href="tel:5139279675" class="inline-flex items-center justify-center px-8 py-4 border-2 border-white/30 text-white font-[Rajdhani] font-semibold uppercase tracking-wide hover:border-[#D62828] hover:text-[#D62828] transition">
+                <Phone className="w-5 h-5 mr-2" /> (513) 927-9675
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-white/8 backdrop-blur border border-white/15 p-6 md:p-8 shadow-2xl">
+            <p class="text-[#D62828] font-[Rajdhani] font-bold uppercase tracking-widest text-sm mb-4">The Cardinal Dirtworks standard</p>
+            <p class="text-2xl md:text-3xl font-[Rajdhani] font-bold uppercase leading-tight mb-5">
+              Not just dirt work. Outcome work.
+            </p>
+            <p class="text-gray-300 leading-relaxed mb-6">
+              We think through the hidden parts first: access, water, grade, utilities, cleanup, and what the site needs to be ready for next.
+            </p>
+            <div class="grid grid-cols-2 gap-3">
+              {proofStats.map((stat) => (
+                <div class="border border-white/10 bg-black/20 p-4">
+                  <div class="text-4xl font-[Rajdhani] font-bold text-[#D62828] leading-none">{stat.value}</div>
+                  <p class="text-sm text-gray-300 mt-2 leading-tight">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Cardinal Dirtworks Exists -->
+    <section class="py-18 md:py-24 bg-white overflow-hidden">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-center">
+          <div>
+            <p class="kicker mb-3">Why Cardinal Dirtworks exists</p>
+            <h2 class="text-4xl md:text-6xl font-[Rajdhani] font-bold uppercase text-[#171717] leading-none mb-6">
+              Sitework should not feel like a gamble.
+            </h2>
+            <p class="text-xl text-gray-700 leading-relaxed mb-6">
+              Too many contractors treat residential sitework like a commodity. Show up, move dirt, send the invoice. That is how homeowners end up with ruts, drainage problems, vague scope, and a mess the next contractor has to fix.
+            </p>
+            <p class="text-lg text-gray-600 leading-relaxed">
+              Cardinal Dirtworks was built for the space between big commercial earthwork and small handyman work. Serious equipment. Clear communication. A finish that respects the property.
+            </p>
+          </div>
+
+          <div class="relative">
+            <div class="absolute -inset-5 bg-[#D62828]/25 blur-3xl"></div>
+            <div class="relative bg-[#171717] text-white p-8 md:p-10 shadow-2xl cardinal-grid border border-[#D62828]/30">
+              <p class="kicker mb-5">How we judge the job</p>
+              <div class="space-y-5">
+                {standards.map((item, index) => (
+                  <div class="flex items-start gap-4 border-b border-white/10 pb-5 last:border-b-0 last:pb-0">
+                    <span class="w-10 h-10 bg-[#D62828] text-[#171717] flex items-center justify-center font-[Rajdhani] font-bold text-lg flex-shrink-0">{String(index + 1).padStart(2, '0')}</span>
+                    <span class="text-lg text-gray-200 font-medium">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What Makes Us Different -->
+    <section class="py-18 md:py-24 bg-[#171717] text-white cardinal-topo">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-[0.75fr_1.25fr] gap-10 items-start mb-12">
+          <div>
+            <p class="kicker mb-3">What makes us different</p>
+            <h2 class="text-4xl md:text-6xl font-[Rajdhani] font-bold uppercase leading-none">
+              The plan matters as much as the machine.
+            </h2>
+          </div>
+          <p class="text-xl text-gray-300 leading-relaxed max-w-3xl">
+            Anyone can advertise equipment. The difference is knowing when to use it, where to stage it, what not to damage, and how to leave the site ready for the next phase.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {differentiators.map((item) => (
+            <div class="bg-white/5 border border-white/10 p-7 min-h-[300px] flex flex-col hover:border-[#D62828]/60 transition">
+              <div class="w-14 h-14 bg-[#D62828] flex items-center justify-center mb-7">
+                <item.icon className="w-7 h-7 text-[#171717]" />
+              </div>
+              <h3 class="text-2xl font-[Rajdhani] font-bold uppercase text-white mb-3 leading-none">{item.title}</h3>
+              <p class="text-gray-400 leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Field Standard Section -->
+    <section class="py-18 md:py-24 bg-[#f5f5f0]">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+          <p class="kicker mb-3">How Cardinal Dirtworks works</p>
+          <h2 class="text-4xl md:text-6xl font-[Rajdhani] font-bold uppercase text-[#171717] leading-none mb-5">
+            Clear scope. Careful access. Clean finish.
+          </h2>
+          <p class="text-xl text-gray-700 leading-relaxed">
+            The brand is built around simple field discipline: understand the problem, protect the parts of the property that should stay, move the dirt correctly, and leave the site ready for whatever comes next.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Commitment Section -->
+    <section class="py-18 md:py-24 bg-white">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-[0.8fr_1.2fr] gap-12 items-start">
+          <div class="sticky top-28">
+            <p class="kicker mb-3">Our commitment</p>
+            <h2 class="text-4xl md:text-6xl font-[Rajdhani] font-bold uppercase text-[#171717] leading-none mb-6">
+              We leave the property better prepared than we found it.
+            </h2>
+            <p class="text-lg text-gray-600 leading-relaxed mb-7">
+              The Cardinal Dirtworks promise is not fancy. It is practical: understand the site, do the work cleanly, communicate clearly, and make the next step easier.
+            </p>
+            <a href="/reviews" class="inline-flex items-center text-[#171717] font-[Rajdhani] font-bold uppercase tracking-wide hover:text-[#D62828] transition">
+              Read customer reviews <ArrowRight className="w-5 h-5 ml-2" />
+            </a>
+          </div>
+          
+          <div class="grid sm:grid-cols-2 gap-5">
+            {commitments.map((item) => (
+              <div class="bg-[#f5f5f0] border border-black/10 p-7 min-h-[230px]">
+                <div class="w-12 h-12 bg-[#171717] flex items-center justify-center mb-6">
+                  <Shield className="w-6 h-6 text-[#D62828]" />
+                </div>
+                <h3 class="text-2xl font-[Rajdhani] font-bold uppercase text-[#171717] leading-none mb-3">{item.title}</h3>
+                <p class="text-gray-600 leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-18 md:py-24 bg-[#D62828] cardinal-grid-dark">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-[1fr_0.8fr] gap-10 items-center">
+          <div>
+            <p class="font-[Rajdhani] font-bold uppercase tracking-widest text-[#171717]/70 mb-3">Ready when the site is not</p>
+            <h2 class="text-5xl md:text-7xl font-[Rajdhani] font-bold uppercase text-[#171717] leading-none mb-5">
+              Tell us what needs fixed.
+            </h2>
+            <p class="text-xl text-[#171717]/75 max-w-2xl leading-relaxed">
+              Excavation, grading, drainage, demolition, utilities, clearing, driveways, ponds, walls, and the messy site problems that do not fit in a neat box.
+            </p>
+          </div>
+          <div class="bg-[#171717] text-white p-7 md:p-8 shadow-2xl">
+            <div class="flex items-center gap-2 text-yellow-400 mb-4">
+              {[1,2,3,4,5].map(() => <Star className="w-5 h-5 fill-current" />)}
+            </div>
+            <p class="text-2xl font-[Rajdhani] font-bold uppercase mb-5">Free quote. Straight answer. No pressure.</p>
+            <div class="flex flex-col gap-3">
+              <a href="/get-a-quote" class="inline-flex items-center justify-center px-8 py-4 bg-[#D62828] text-[#171717] font-[Rajdhani] font-bold uppercase tracking-wide hover:bg-white transition">
+                Get Your Free Quote <ArrowRight className="w-5 h-5 ml-2" />
+              </a>
+              <a href="tel:5139279675" class="inline-flex items-center justify-center px-8 py-4 border-2 border-white/20 text-white font-[Rajdhani] font-bold uppercase tracking-wide hover:border-[#D62828] hover:text-[#D62828] transition">
+                <Phone className="w-5 h-5 mr-2" /> Call (513) 927-9675
+              </a>
+            </div>
+            <div class="flex flex-wrap gap-4 mt-6 text-sm text-gray-300">
+              <span class="flex items-center gap-1"><Shield className="w-4 h-4 text-[#D62828]" /> Licensed & Insured</span>
+              <span class="flex items-center gap-1"><HardHat className="w-4 h-4 text-[#D62828]" /> Sitework Specialists</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
